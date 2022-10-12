@@ -1,13 +1,13 @@
 class Solution:
     # fibonacci
     
-    # def climbStairs(self, n: int) -> int:
-    #     one, two = 1, 1                 
-    #     for i in range(n-1):
-    #         temp = one
-    #         one = one + two
-    #         two = temp
-    #     return one 
+    def climbStairs(self, n: int) -> int:
+        one, two = 1, 1                 
+        for i in range(n-1):
+            temp = one
+            one = one + two
+            two = temp
+        return one 
     
     # recursion with memoization
     
@@ -26,17 +26,19 @@ class Solution:
 #         memo = [0]*n
 #         return self.climb_stairs(0, n, memo)
     
-    def climbStairs(self, n: int) -> int:
-        dp = [0]*(n+1)
+    # dp method with memoization
+    
+#     def climbStairs(self, n: int) -> int:
+#         dp = [0]*(n+1)
         
-        if n == 1:
-            return 1
+#         if n == 1:
+#             return 1
         
-        dp[1] = 1
-        dp[2] = 2
+#         dp[1] = 1
+#         dp[2] = 2
         
-        for i in range(3, n+1):
-            dp[i] = dp[i-1] + dp[i-2]
+#         for i in range(3, n+1):
+#             dp[i] = dp[i-1] + dp[i-2]
         
-        return dp[n]
+#         return dp[n]
         
