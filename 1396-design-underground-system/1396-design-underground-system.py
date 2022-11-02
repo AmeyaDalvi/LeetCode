@@ -12,15 +12,13 @@ class UndergroundSystem:
         
 
     def checkIn(self, id: int, stationName: str, t: int) -> None:
-        if id not in self.customer:
-            self.customer[id] = [[stationName, ""], t]
+        self.customer[id] = [[stationName, ""], t]
         
     def checkOut(self, id: int, stationName: str, t: int) -> None:
-        if id in self.customer:
-            self.customer[id][0][1] = stationName
-            self.customer[id][1] = t - self.customer[id][1]
-            self.stations[(self.customer[id][0][0], self.customer[id][0][1])].append(self.customer[id][1])
-        
+        self.customer[id][0][1] = stationName
+        self.customer[id][1] = t - self.customer[id][1]
+        self.stations[(self.customer[id][0][0], self.customer[id][0][1])].append(self.customer[id][1])
+
         del self.customer[id]
         
 
