@@ -1,3 +1,31 @@
+# class Leaderboard:
+
+#     def __init__(self):
+#         self.leaderboard = {}
+        
+
+#     def addScore(self, playerId: int, score: int) -> None:
+#         if playerId not in self.leaderboard:
+#             self.leaderboard[playerId] = score
+#         else:
+#             self.leaderboard[playerId] += score
+    
+            
+#     def top(self, K: int) -> int:
+#         topK = sorted(list(self.leaderboard.values()), reverse=True)
+#         answer  = 0 
+#         for i in range(0, K):
+#             answer+= topK[i]
+        
+#         return answer
+
+#     def reset(self, playerId: int) -> None:
+#         del self.leaderboard[playerId]
+        
+
+from heapq import *
+import numpy as np
+
 class Leaderboard:
 
     def __init__(self):
@@ -9,21 +37,19 @@ class Leaderboard:
             self.leaderboard[playerId] = score
         else:
             self.leaderboard[playerId] += score
-        
-        print("Leaderboard",self.leaderboard)
+    
             
     def top(self, K: int) -> int:
-        print("Sorted scores", sorted(list(self.leaderboard.values()), reverse=True))
-        topK = sorted(list(self.leaderboard.values()), reverse=True)
-        answer  = 0 
-        for i in range(0, K):
-            answer+= topK[i]
+        heap = list(-1*np.array(list(self.leaderboard.values())))
+        heapq.heapify(heap)
         
-        return answer
+        answer  = [-1*heapq.heappop(heap) for i in range(0,K) ]
+        
+        return sum(answer)
 
     def reset(self, playerId: int) -> None:
-        # self.leaderboard[playerId] = 0
         del self.leaderboard[playerId]
+        
         
 
 
