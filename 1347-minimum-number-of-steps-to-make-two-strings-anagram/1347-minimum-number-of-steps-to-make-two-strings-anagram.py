@@ -1,5 +1,7 @@
 import collections
 
+#use default dict int
+
 class Solution:
     def minSteps(self, s: str, t: str) -> int:
   
@@ -14,7 +16,7 @@ class Solution:
             else:
                 count += 1
     
-        return sum(memo.values())
+        return count
         
             
         
