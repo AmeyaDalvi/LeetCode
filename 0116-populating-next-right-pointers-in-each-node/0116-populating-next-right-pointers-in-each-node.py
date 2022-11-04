@@ -8,12 +8,15 @@ class Node:
         self.next = next
 """
 
+# Use the concept of two pointer curr and nxt
+# nxt is used to bring cur back to the right location after curr traverses through 
+
 class Solution:
     def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
         
-        curr, nxt = root, root.left if root else None
+        curr, leftmost = root, root.left if root else None
         
-        while curr and nxt:
+        while curr and leftmost:
             curr.left.next = curr.right
             
             if curr.next:
@@ -22,8 +25,8 @@ class Solution:
             curr = curr.next
             
             if not curr:
-                curr = nxt
-                nxt = curr.left
+                curr = leftmost
+                leftmost = curr.left
             
             
         return root
