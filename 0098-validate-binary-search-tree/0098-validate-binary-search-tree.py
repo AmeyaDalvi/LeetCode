@@ -25,10 +25,10 @@ class Solution:
         
         while fringe:
             parent, lt, gt = fringe.pop()
-            print("parent==>", parent.val)
-            print("left ==>", parent.left.val if parent.left else None)
-            print("right ==>", parent.right.val if parent.right else None)
-            print("")
+            # print("parent==>", parent.val)
+            # print("left ==>", parent.left.val if parent.left else None)
+            # print("right ==>", parent.right.val if parent.right else None)
+            # print("")
             
             if parent.left:
                 if parent.left.val >= parent.val:
