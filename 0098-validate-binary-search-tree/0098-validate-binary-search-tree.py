@@ -6,57 +6,24 @@
 #         self.right = right
 class Solution:
     
-    def isValid(self, curr, lt, gt):
-        flag_left = True
-        flag_right = True
+    def inorder(self, node, output):
+        if not node:
+            return
         
-        for x in lt:
-            flag_left = curr.val < x
-        
-        for y in gt:
-            flag_right = curr.val > y
-    
-        return flag_left and flag_right
-        
+
+        self.inorder(node.left, output)
+        output.append(node.val)
+        self.inorder(node.right, output)
+
     
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        output = []
         
-        fringe = [(root, [], [])]
+        self.inorder(root, output)
         
-        while fringe:
-            parent, lt, gt = fringe.pop()
-            # print("parent==>", parent.val)
-            # print("left ==>", parent.left.val if parent.left else None)
-            # print("right ==>", parent.right.val if parent.right else None)
-            # print("")
-            
-            if parent.left:
-                if parent.left.val >= parent.val:
-                    return False
-                flag_isValid = self.isValid(parent.left, lt, gt)
-                
-                if flag_isValid: 
-                    fringe.append((parent.left, lt + [parent.val], gt))
-                    
-                else:
-                    return False
-            
-            if parent.right:
-                if parent.right.val <= parent.val:
-                    return False
-                flag_isValid = self.isValid(parent.right, lt, gt)
-                
-                if flag_isValid: 
-                    fringe.append((parent.right, lt, gt + [parent.val]))
-                    
-                else:
-                    return False
+        for i in range(1, len(output)):
+            if output[i-1] >= output[i]:
+                return False
         
         return True
-            
-        
-        
-        
-        
-        
         
