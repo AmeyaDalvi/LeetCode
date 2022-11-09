@@ -1,3 +1,6 @@
+## Use set to store elements and use random.choices with weights and k=1
+
+
 import random
 class RandomizedSet(object):
 
