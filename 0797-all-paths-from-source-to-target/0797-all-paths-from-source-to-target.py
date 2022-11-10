@@ -1,4 +1,7 @@
 class Solution:
+    
+    # DFS, you got this one, just use partial array to form the semi arrays in each path and append them to final result arr op
+    # partial.copy() vv imp
     def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
         
         op = []
