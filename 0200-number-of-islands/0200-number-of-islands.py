@@ -5,7 +5,8 @@ class Solution:
             return 0
         
         count = 0
-        
+
+#dfs solution, karan's method, change 1's to 0's. Use a isValid function verify if node is in bounds. For loops to increment island counts and initiating dfs 
         rows, cols = len(grid), len(grid[0])
         
         def isValid(i, j):
