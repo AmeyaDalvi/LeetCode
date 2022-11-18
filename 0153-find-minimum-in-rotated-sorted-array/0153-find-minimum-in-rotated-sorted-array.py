@@ -5,7 +5,7 @@ class Solution:
         last = len(nums)-1
         
         while first < last:
-            mid = (first + last)//2
+            mid = first + (last-first)//2
             
             if nums[last] < nums[mid]:
                 first = mid + 1
