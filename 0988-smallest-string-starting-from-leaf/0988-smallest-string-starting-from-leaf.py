@@ -4,13 +4,15 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+
+# use chr to convert number to char ascii and ord to convert char to num ascii
 class Solution:
     def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
         
         all_paths = []
         path = ''
         self.min_len = float('inf')
-        
         
         if root == None:
             return ""
