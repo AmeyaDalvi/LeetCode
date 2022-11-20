@@ -1,3 +1,5 @@
+# divide the array, check if target lies in that section
+
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         low = 0
