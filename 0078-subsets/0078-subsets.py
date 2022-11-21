@@ -1,3 +1,5 @@
+# O(n^2) soln but use copy.deepcopy() to copy the subset into the new array we are making
+
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         
