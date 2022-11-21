@@ -21,7 +21,7 @@ class Solution:
         if head == None or head.next == None:
             return False
         
-        while fast.next and fast:
+        while fast.next:
             slow = slow.next
             fast = fast.next.next
             if fast == None:
