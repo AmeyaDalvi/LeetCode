@@ -1,29 +1,52 @@
-from collections import defaultdict
+class Event:
+    def __init__(self, id: int, stationName: str, t: int) -> None:
+        self.id = id
+        self.stationName = stationName
+        self.time = t
 
+class Average:
+    def __init__(self, total: int, count: int) -> None:
+        self.total = total
+        self.count = count
+        
+    def updateAverage(self, diff: int) -> None:
+        self.total += diff
+        self.count += 1
+    
+    def getAverage(self) -> float:
+        return self.total / self.count
 
-#use defaultdict for stations dictionary, and dict for customers. 
-# e.g customers: {45: [['Leyton', 'Waterloo'], 3]} stations: {('Leyton', 'Waterloo'): [12, 10]}
 
 class UndergroundSystem:
 
     def __init__(self):
-        self.stations = defaultdict(list)
-        self.customer = {}
-        
+        self.customers = {}
+        self.averages = {}
 
     def checkIn(self, id: int, stationName: str, t: int) -> None:
-        self.customer[id] = [[stationName, ""], t]
+        event = Event(id, stationName, t)
+        self.customers[id] = event
         
     def checkOut(self, id: int, stationName: str, t: int) -> None:
-        self.customer[id][0][1] = stationName
-        self.customer[id][1] = t - self.customer[id][1]
-        self.stations[(self.customer[id][0][0], self.customer[id][0][1])].append(self.customer[id][1])
-
-        del self.customer[id]
+        checkout = self.customers.get(id)
         
+        diff = t - checkout.time
+        
+        key = (checkout.stationName, stationName)
+        
+        if key not in self.averages:
+            average = Average(0,0)
+            self.averages[key] = average
+        else:
+            average = self.averages[key]
+
+        self.averages[key].updateAverage(diff)
+
 
     def getAverageTime(self, startStation: str, endStation: str) -> float:
-        return sum(self.stations[(startStation, endStation)])/len(self.stations[(startStation, endStation)])
+        key = (startStation, endStation)
+        return self.averages[key].getAverage()
+        
         
 
 
