@@ -20,15 +20,15 @@ class Average:
 class UndergroundSystem:
 
     def __init__(self):
-        self.customers = {}
+        self.arrivals = {}
         self.averages = {}
 
     def checkIn(self, id: int, stationName: str, t: int) -> None:
         event = Event(id, stationName, t)
-        self.customers[id] = event
+        self.arrivals[id] = event
         
     def checkOut(self, id: int, stationName: str, t: int) -> None:
-        checkout = self.customers.get(id)
+        checkout = self.arrivals.get(id)
         
         diff = t - checkout.time
         
