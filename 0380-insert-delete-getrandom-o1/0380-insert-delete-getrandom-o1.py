@@ -36,11 +36,12 @@ class RandomizedSet(object):
         """
         :rtype: int
         """
-        p = 1//len(self.random_set)
-        if p == 0:
-            return random.choices(list(self.random_set), k=1)[0]
+#         p = 1//len(self.random_set)
+#         if p == 0:
+#             return random.choices(list(self.random_set), k=1)[0]
         
-        return random.choices(list(self.random_set), weights = [p]*len(self.random_set), k=1)[0]
+#         return random.choices(list(self.random_set), weights = [p]*len(self.random_set), k=1)[0]
+        return random.choice(list(self.random_set))
 
 
 # Your RandomizedSet object will be instantiated and called as such:
