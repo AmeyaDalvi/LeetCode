@@ -3,6 +3,8 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+
+#Use reverse list concept first and then reverse both input lists. Then start adding from end
 class Solution:
     
     def reverseList(self,head):
@@ -27,7 +29,7 @@ class Solution:
         ans = ListNode()
         curans = ans
         carry = 0
-        while cur1 or cur2:
+        while cur1 or cur2 or carry:
             x1 = cur1.val if cur1 else 0
             x2 = cur2.val if cur2 else 0
             
@@ -42,8 +44,8 @@ class Solution:
             curans = nxt
             
         
-        if carry>0:
-            curans.val+=carry
+        # if carry:
+        #     curans.val+=carry
             
         ans = self.reverseList(ans)
         
