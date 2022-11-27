@@ -11,7 +11,7 @@ class Solution:
 			
         count = 0
         for char in t:
-            if memo[char]:
+            if memo[char]>0:
                 memo[char] -=1   
             else:
                 count += 1
