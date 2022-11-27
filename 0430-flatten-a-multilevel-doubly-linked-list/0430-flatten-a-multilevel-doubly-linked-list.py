@@ -1,6 +1,6 @@
 """
 # Definition for a Node.
-class Node(object):
+class Node:
     def __init__(self, val, prev, next, child):
         self.val = val
         self.prev = prev
@@ -8,8 +8,7 @@ class Node(object):
         self.child = child
 """
 
-
-## Use a stack to store the pointer to the node that has a child node.
+## Use a stack to store the pointer to the node.next of the node that has a child node.
 
 class Solution(object):
     def flatten(self, head):
@@ -42,10 +41,3 @@ class Solution(object):
             
             
         return head
-    
-        
-        
-        
-        
-        
-        
