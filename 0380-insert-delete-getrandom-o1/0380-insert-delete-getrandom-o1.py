@@ -1,4 +1,4 @@
-## Use set to store elements and use random.choices with weights and k=1
+## Use set to store elements and use random.choice
 
 
 import random
@@ -36,11 +36,7 @@ class RandomizedSet(object):
         """
         :rtype: int
         """
-#         p = 1//len(self.random_set)
-#         if p == 0:
-#             return random.choices(list(self.random_set), k=1)[0]
-        
-#         return random.choices(list(self.random_set), weights = [p]*len(self.random_set), k=1)[0]
+
         return random.choice(list(self.random_set))
 
 
