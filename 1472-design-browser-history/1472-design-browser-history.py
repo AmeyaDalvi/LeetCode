@@ -17,42 +17,25 @@ class BrowserHistory:
         
     def back(self, steps: int) -> str:
         
-        if len(self.backward) == 0:
-            return self.current
+        possible = min(len(self.backward), steps)
         
-        if steps >= len(self.backward):
+        while possible:
             self.fwd.append(self.current)
-            self.fwd += self.backward[::-1]
-            self.current = self.fwd.pop()
-            self.backward = []
-        else:
-            while steps > 0:
-                self.fwd.append(self.current)
-                self.current = self.backward.pop()
-                steps -= 1
+            self.current = self.backward.pop()
+            possible -= 1
         
         return self.current
 
     def forward(self, steps: int) -> str:
         
-        if len(self.fwd) == 0:
-            return self.current
+        possible = min(len(self.fwd), steps)
         
-        if steps >= len(self.fwd):
+        while possible:
             self.backward.append(self.current)
-            self.backward += self.fwd[::-1]
-            # print(self.backward) 
-            self.current = self.backward.pop()
-            self.fwd = []
-        else:
-            while steps > 0:
-                self.backward.append(self.current)
-                self.current = self.fwd.pop()
-                steps -= 1
+            self.current = self.fwd.pop()
+            possible -=1
         
         return self.current
-            
-        
         
 
 
