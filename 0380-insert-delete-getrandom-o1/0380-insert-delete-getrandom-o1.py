@@ -1,4 +1,5 @@
-## Use set to store elements and use random.choice
+## Use dictionary to store indexes of the values inserted into the list and list to store values inserted
+## and use random.choice
 
 
 import random
