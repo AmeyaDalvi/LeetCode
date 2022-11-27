@@ -1,21 +1,28 @@
+# Use stack and a currString and currNum variables that you update till you encounter a [
+
 class Solution:
     def decodeString(self, s):
-        stack = []; curNum = 0; curString = ''
+        stack = []
+        currString = ''
+        currNum = 0
+        
         for c in s:
             if c == '[':
-                stack.append(curString)
-                stack.append(curNum)
-                curString = ''
-                curNum = 0
+                stack.append(currString)
+                stack.append(currNum)
+                currNum = 0
+                currString = ''
             elif c == ']':
                 num = stack.pop()
                 prevString = stack.pop()
-                curString = prevString + num*curString
-            elif c.isdigit():     # curNum*10+int(c) is helpful in keep track of more than 1 digit number
-                curNum = curNum*10 + int(c)
+                currString = prevString + num*currString
+                
+            elif c.isdigit():
+                currNum = currNum*10 + int(c)
             else:
-                curString += c
-        return curString
+                currString += c
+        
+        return currString
                 
                 
                 
