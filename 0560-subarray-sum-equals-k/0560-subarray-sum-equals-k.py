@@ -1,23 +1,24 @@
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        sum1 = 0
-        count = 0
-        num_dict = defaultdict(int)
         
-        num_dict[0] = 1
+        cum_sum = []
+        sum = 0
+        count = 0
+        hash_map = {0:1}
         
         for i in range(len(nums)):
-            sum1 += nums[i]
-            if sum1-k in num_dict:
-                count += num_dict[sum1-k]
-            num_dict[sum1] += 1
+            sum += nums[i]
+            cum_sum.append(sum)
+            
+        for i in range(len(cum_sum)):
+            if cum_sum[i] - k in hash_map:
+                count+= hash_map[cum_sum[i] - k]
+            if cum_sum[i] not in hash_map:
+                hash_map[cum_sum[i]] = 1
+            elif cum_sum[i] in hash_map:
+                hash_map[cum_sum[i]] += 1
+        
         
         return count
-                
             
-        
-        
-        
-                
-        
-        
+            
