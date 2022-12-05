@@ -1,7 +1,7 @@
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
         
-        ans = ''
+        count = 0
         
         s = s.rstrip(' ')
         
@@ -10,9 +10,9 @@ class Solution:
         for c in s:
             if c == ' ':
                 break
-            ans = c + ans
+            count+=1
         
-        return len(ans)
+        return count
         
             
         
