@@ -19,4 +19,3 @@ class Solution:
                 count+=1
         
         return count == max_c
-                
