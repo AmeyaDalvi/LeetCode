@@ -3,9 +3,11 @@ class Solution:
         group_dict = defaultdict(list)
         
         for s in strs:
-            s_sort = ''.join(sorted(s))
-            group_dict[s_sort].append(s)
+            count = [0]*26
+            for c in s:
+                count[ord(c) - 97] += 1
+                
+            group_dict[tuple(count)].append(s)
         
-        return list(group_dict.values())
-            
+        return group_dict.values()
                 
